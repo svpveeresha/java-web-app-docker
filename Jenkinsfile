@@ -19,9 +19,8 @@ node {
 
     // Push Docker Image: Login to Docker Hub and push the image
     stage('Push Docker Image') {
-        withCredentials([string(credentialsId: 'Docker_Hub_Pwd', variable: 'Docker_Hub_Pwd')]) {
-            sh "docker login -u dockerhandson -p ${Docker_Hub_Pwd}"  // Login to Docker Hub
-        }
+        // Using the credentials directly with hardcoded values for username and password
+        sh "docker login -u veeresha -p Veeresha@8812345"  // Login to Docker Hub
         sh 'docker push dockerhandson/java-web-app'  // Push the image to Docker Hub
     }
 
