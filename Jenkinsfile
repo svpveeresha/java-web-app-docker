@@ -31,16 +31,16 @@ node {
         // Use SSH to manage Docker container on the remote server
         sshagent(['DOCKER_SERVER']) {
             // Stop the existing container (if running)
-            sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.20.72 docker stop java-web-app || true'
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.16.78 docker stop java-web-app || true'
             
             // Remove the existing container
-            sh 'ssh ubuntu@172.31.20.72 docker rm java-web-app || true'
+            sh 'ssh ubuntu@172.31.16.78 docker rm java-web-app || true'
             
             // Remove any images (force removal)
-            sh 'ssh ubuntu@172.31.20.72 docker rmi -f $(docker images -q) || true'
+            sh 'ssh ubuntu@172.31.16.78 docker rmi -f $(docker images -q) || true'
             
             // Run the new Docker container
-            sh "ssh ubuntu@172.31.20.72 ${dockerRun}"
+            sh "ssh ubuntu@172.31.16.78 ${dockerRun}"
         }
     }
 }
