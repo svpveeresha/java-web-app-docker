@@ -19,8 +19,8 @@ node {
 
     // Push Docker Image: Login to Docker Hub and push the image
     stage('Push Docker Image') {
-        // Using the credentials directly with hardcoded values for username and password
-        sh "docker login -u veeresha -p Veeresha@8812345"  // Login to Docker Hub
+        // Using the credentials directly with updated username and password
+        sh "docker login -u veereshajlr -p Veeresha@8812345"  // Login to Docker Hub with updated username
         sh 'docker push dockerhandson/java-web-app'  // Push the image to Docker Hub
     }
 
