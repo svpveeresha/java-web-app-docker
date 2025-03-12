@@ -14,7 +14,7 @@ node {
 
     // Build Docker Image: Create a Docker image from the application
     stage('Build Docker Image') {
-        sh 'docker build -t veereshajlr/java-web-app .'  // Build the Docker image with your username
+        sh 'docker build -t veereshajlr/java-web-app:${buildNumber} .'  // Build the Docker image with your username
     }
 
     // Push Docker Image: Login to Docker Hub and push the image
