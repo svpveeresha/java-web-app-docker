@@ -1,7 +1,7 @@
 node {
     // SCM Checkout: Pulling the code from the specified GitHub repository
     stage('SCM Checkout') {
-        git url: 'https://github.com/MithunTechnologiesDevOps/java-web-app-docker.git', branch: 'master'
+        git url: 'https://github.com/svpveeresha/java-web-app-docker.git', branch: 'master'  // Updated GitHub repo path
     }
 
     // Maven Clean Package: Build the project using Maven
@@ -14,19 +14,19 @@ node {
 
     // Build Docker Image: Create a Docker image from the application
     stage('Build Docker Image') {
-        sh 'docker build -t dockerhandson/java-web-app .'  // Building the Docker image
+        sh 'docker build -t veereshajlr/java-web-app .'  // Build the Docker image with your username
     }
 
     // Push Docker Image: Login to Docker Hub and push the image
     stage('Push Docker Image') {
         // Using the credentials directly with updated username and password
         sh "docker login -u veereshajlr -p Veeresha@8812345"  // Login to Docker Hub with updated username
-        sh 'docker push dockerhandson/java-web-app'  // Push the image to Docker Hub
+        sh 'docker push veereshajlr/java-web-app'  // Push the image to your own Docker Hub repository
     }
 
     // Run Docker Image in Dev Server: Deploy the Docker container to the server
     stage('Run Docker Image In Dev Server') {
-        def dockerRun = 'docker run -d -p 8080:8080 --name java-web-app dockerhandson/java-web-app'
+        def dockerRun = 'docker run -d -p 8080:8080 --name java-web-app veereshajlr/java-web-app'
 
         // Use SSH to manage Docker container on the remote server
         sshagent(['DOCKER_SERVER']) {
